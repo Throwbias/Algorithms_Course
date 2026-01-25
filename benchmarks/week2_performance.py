@@ -37,7 +37,7 @@ DATA_TYPES = {
 
 RESULTS_DIR = "benchmarks/results"
 os.makedirs(RESULTS_DIR, exist_ok=True)
-CSV_FILE = os.path.join(RESULTS_DIR, "week2_comparison.csv")
+CSV_FILE = os.path.join(RESULTS_DIR, "comparison_table.csv")
 
 # --- Benchmark function ---
 def benchmark_algorithm(func, data):

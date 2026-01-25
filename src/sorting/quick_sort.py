@@ -1,53 +1,73 @@
 import random
-from typing import List
+from typing import List, TypeVar
 
-def quick_sort(arr: List[int], low: int = None, high: int = None, threshold: int = 10) -> List[int]:
+T = TypeVar("T")
+
+
+def quick_sort(arr: List[T]) -> List[T]:
     """
-    QuickSort algorithm with randomized pivot and insertion sort optimization.
+    Sorts a list using optimized QuickSort.
 
-    Args:
-        arr (List[int]): The input list to sort.
-        low (int): Starting index (default None, sets to 0).
-        high (int): Ending index (default None, sets to len(arr)-1).
-        threshold (int): Switch to insertion sort for subarrays smaller than this.
+    Features:
+    - Randomized pivot selection
+    - Three-way partitioning (handles duplicates efficiently)
+    - Insertion sort for small subarrays
+    - Returns a new sorted list (does not modify input)
 
-    Returns:
-        List[int]: Sorted list (non-destructive).
+    Average Time: O(n log n)
+    Worst Time: O(n^2) (rare due to randomization)
+    Space: O(log n) recursion stack
     """
-    if low is None or high is None:
-        arr = arr.copy()  # non-destructive
-        low = 0
-        high = len(arr) - 1
+    if len(arr) <= 1:
+        return arr.copy()
 
-    def insertion_sort(sub_arr: List[int], left: int, right: int):
-        for i in range(left + 1, right + 1):
-            key = sub_arr[i]
-            j = i - 1
-            while j >= left and sub_arr[j] > key:
-                sub_arr[j + 1] = sub_arr[j]
-                j -= 1
-            sub_arr[j + 1] = key
+    data = arr.copy()
+    _quick_sort(data, 0, len(data) - 1)
+    return data
 
-    def partition(l: int, h: int) -> int:
-        pivot_index = random.randint(l, h)
-        arr[h], arr[pivot_index] = arr[pivot_index], arr[h]  # move pivot to end
-        pivot = arr[h]
-        i = l - 1
-        for j in range(l, h):
-            if arr[j] <= pivot:
-                i += 1
-                arr[i], arr[j] = arr[j], arr[i]
-        arr[i + 1], arr[h] = arr[h], arr[i + 1]
-        return i + 1
 
-    def _quick_sort(l: int, h: int):
-        if l < h:
-            if h - l + 1 <= threshold:
-                insertion_sort(arr, l, h)
-            else:
-                pi = partition(l, h)
-                _quick_sort(l, pi - 1)
-                _quick_sort(pi + 1, h)
+def _quick_sort(arr: List[T], low: int, high: int) -> None:
+    if high <= low:
+        return
 
-    _quick_sort(low, high)
-    return arr
+    # Insertion sort cutoff
+    if high - low <= 10:
+        _insertion_sort(arr, low, high)
+        return
+
+    lt, gt = _partition_3way(arr, low, high)
+    _quick_sort(arr, low, lt - 1)
+    _quick_sort(arr, gt + 1, high)
+
+
+def _partition_3way(arr: List[T], low: int, high: int):
+    pivot_index = random.randint(low, high)
+    pivot = arr[pivot_index]
+    arr[low], arr[pivot_index] = arr[pivot_index], arr[low]
+
+    lt = low
+    i = low + 1
+    gt = high
+
+    while i <= gt:
+        if arr[i] < pivot:
+            arr[lt], arr[i] = arr[i], arr[lt]
+            lt += 1
+            i += 1
+        elif arr[i] > pivot:
+            arr[i], arr[gt] = arr[gt], arr[i]
+            gt -= 1
+        else:
+            i += 1
+
+    return lt, gt
+
+
+def _insertion_sort(arr: List[T], low: int, high: int) -> None:
+    for i in range(low + 1, high + 1):
+        key = arr[i]
+        j = i - 1
+        while j >= low and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
