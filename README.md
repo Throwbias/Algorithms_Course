@@ -1,107 +1,49 @@
-# Week 4 Graph Algorithms Project
+# Algorithms Course — Week 5: Dynamic Programming
 
-## Project Overview
-This project implements and benchmarks fundamental graph algorithms, including:
+## Overview
+This week focuses on **Dynamic Programming (DP)**, demonstrating how recursion can be optimized with memoization and tabulation for problems with overlapping subproblems.
 
-- Graph representations (adjacency list and adjacency matrix)
-- Breadth-First Search (BFS)
-- Depth-First Search (DFS – iterative and recursive)
-- Dijkstra’s shortest path algorithm
-- Performance benchmarking and visualization
+Implemented DP problems:
+- Fibonacci Sequence
+- 0/1 Knapsack Problem
+- Longest Common Subsequence (LCS)
 
-The project explores how graph structure (sparse vs. dense, weighted vs. unweighted) and representation affect traversal and shortest-path performance.
-
-**Repository:**  
-https://github.com/Throwbias/Algorithms_Course.git
-
----
+Benchmarks compare **naive recursion** vs **top-down memoization** vs **bottom-up tabulation**.
 
 ## Project Structure
-Algorithms_Course/
-├── README.md  
-├── src/  
-│   ├── graphs/  
-│   │   ├── graph.py  
-│   │   ├── bfs.py  
-│   │   ├── dfs.py  
-│   │   ├── dijkstra.py  
-│   │   └── __init__.py  
-│   └── utils/  
-│       ├── graph_generator.py  
-│       └── visualization.py  
-├── benchmarks/  
-│   ├── week4_graph_benchmark.py  
-│   └── results/  
-│       ├── bfs_sparse_*.png  
-│       ├── bfs_dense_*.png  
-│       ├── dfs_sparse_*.png  
-│       ├── dfs_dense_*.png  
-│       ├── dijkstra_*.png  
-│       └── comparison_table.csv  
-├── tests/  
-│   ├── test_graph_representation.py  
-│   ├── test_bfs.py  
-│   ├── test_dfs.py  
-│   ├── test_dijkstra.py  
-│   └── test_graph_benchmark.py  
-└── analysis/  
-    └── week4_report.md  
+week5_project/
+├── README.md
+├── src/
+│ ├── dp/
+│ │ ├── fibonacci.py
+│ │ ├── knapsack.py
+│ │ └── lcs.py
+│ └── utils/
+│ └── visualization.py
+├── benchmarks/
+│ ├── week5_dp_benchmark.py
+│ └── results/
+├── tests/
+├── analysis/
+└── examples/
 
----
-
-## Setup
-
-**Create and activate a virtual environment**
+## Running Benchmarks
 
 ```bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
+# Activate virtual environment
+source venv/Scripts/activate  # Windows: venv\Scripts\activate
 
-**Install Dependencies**
+# Run the Week 5 benchmark
+python -m benchmarks.week5_dp_benchmark
 
-pip install -r requirements.txt
+All benchmark CSVs and performance PNGs are saved to benchmarks/results/.
 
-**Running Benchmarks**
-Generate performance benchmarks and traversal visualizations:
+## Tests
 
-python -m benchmarks.week4_graph_benchmark
-Outputs will be saved in benchmarks/results/:
+Run all tests for Week 5:
+pytest tests/test_fibonacci.py -v
+pytest tests/test_knapsack.py -v
+pytest tests/test_lcs.py -v
 
-BFS and DFS traversal visualizations: bfs_sparse_*.png, dfs_dense_*.png
-
-Dijkstra performance plots: dijkstra_*.png
-
-Comparison table: comparison_table.csv
-
-**Running Tests**
-Run all unit tests for graph, traversal, and shortest path algorithms:
-
-pytest -v tests/
-All core algorithms are tested:
-
-Graph representation (add nodes, add edges, adjacency list & matrix)
-
-BFS and DFS correctness
-
-Dijkstra shortest path
-
-Benchmarking utilities
-
-**Notes**
-Graphs can be directed or undirected, weighted or unweighted.
-
-Benchmarks compare sparse vs dense graphs and list vs matrix representations.
-
-Visualizations use NetworkX and Matplotlib.
-
-Designed for clarity and modularity to easily extend or modify algorithms.
-
-**References**
-NetworkX: https://networkx.org/
-
-Matplotlib: https://matplotlib.org/
-
-Python heapq for priority queues in Dijkstra's algorithm
+Check out the full project here:
+https://github.com/AaronTobias/Algorithms_Course
