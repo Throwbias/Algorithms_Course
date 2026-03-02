@@ -1,49 +1,117 @@
-# Algorithms Course — Week 5: Dynamic Programming
+# Algorithms Course — Core Techniques
 
-## Overview
-This week focuses on **Dynamic Programming (DP)**, demonstrating how recursion can be optimized with memoization and tabulation for problems with overlapping subproblems.
+This repository contains implementations, benchmarks, and technical analysis for core algorithmic design techniques including deterministic algorithms, dynamic programming, graph algorithms, and randomized computation.
 
-Implemented DP problems:
-- Fibonacci Sequence
-- 0/1 Knapsack Problem
-- Longest Common Subsequence (LCS)
+---
 
-Benchmarks compare **naive recursion** vs **top-down memoization** vs **bottom-up tabulation**.
+# Week 7 — Randomized Algorithms
 
-## Project Structure
-week5_project/
-├── README.md
-├── src/
-│ ├── dp/
-│ │ ├── fibonacci.py
-│ │ ├── knapsack.py
-│ │ └── lcs.py
-│ └── utils/
-│ └── visualization.py
-├── benchmarks/
-│ ├── week5_dp_benchmark.py
-│ └── results/
-├── tests/
-├── analysis/
-└── examples/
+Week 7 focuses on probabilistic algorithm design and randomized data structures.  
+The goal of this module was to explore how randomness improves robustness, scalability, and expected performance while maintaining bounded probabilistic guarantees.
 
-## Running Benchmarks
+## Implemented Algorithms
+
+### Las Vegas Algorithms (Always Correct, Random Runtime)
+- Randomized QuickSort
+- Randomized QuickSelect
+
+### Monte Carlo Algorithms (Probabilistic Accuracy)
+- Fermat Primality Test
+- Miller–Rabin Primality Test
+
+### Probabilistic Data Structures
+- Bloom Filter (probabilistic membership testing)
+- MinHash (Jaccard similarity estimation)
+
+---
+
+## Benchmark Execution
+
+All Week 7 results are generated using:
 
 ```bash
-# Activate virtual environment
-source venv/Scripts/activate  # Windows: venv\Scripts\activate
+python -m benchmarks.week7_randomized_benchmark
+```
 
-# Run the Week 5 benchmark
-python -m benchmarks.week5_dp_benchmark
+All outputs are saved in:
 
-All benchmark CSVs and performance PNGs are saved to benchmarks/results/.
+```
+benchmarks/results/
+```
 
-## Tests
+### Generated Visualizations
 
-Run all tests for Week 5:
-pytest tests/test_fibonacci.py -v
-pytest tests/test_knapsack.py -v
-pytest tests/test_lcs.py -v
+- quicksort_comparison.png  
+- quicksort_comparison_sorted.png  
+- selection_runtime.png  
+- primality_accuracy.png  
+- primality_speed.png  
+- bloom_filter_fp_rate.png  
+- minhash_similarity_plot.png  
+- summary_table.csv  
 
-Check out the full project here:
-https://github.com/AaronTobias/Algorithms_Course
+These plots validate theoretical expectations and empirically demonstrate performance trade-offs between deterministic and probabilistic techniques.
+
+---
+
+## Testing
+
+Run all randomized module tests:
+
+```bash
+pytest tests/randomized -v
+```
+
+All components are fully tested and reproducible.
+
+---
+
+## Key Concepts Demonstrated
+
+- Las Vegas vs Monte Carlo algorithms  
+- Expected O(n log n) vs adversarial worst-case behavior  
+- Probabilistic error bounds  
+- False positive rates and load factors  
+- Runtime variance analysis  
+- Similarity estimation using randomized hashing  
+- Empirical validation of theoretical complexity  
+
+---
+
+## Repository Structure
+
+```
+src/
+    sorting/
+    randomized/
+    dp/
+    graphs/
+    structures/
+
+benchmarks/
+    week7_randomized_benchmark.py
+    results/
+
+tests/
+    randomized/
+
+reports/
+    Week7_Report.md
+```
+
+---
+
+# GitHub
+
+Full project is hosted here:  
+https://github.com/Throwbias/Algorithms_Course.git  
+
+Includes **all source code, tests, benchmarking results, and plots** for verification.
+
+---
+
+## Author
+
+Aaron Tobias  
+Master’s Level Algorithms Coursework  
+Algorithms and Systems Analysis
