@@ -1,105 +1,67 @@
-# Algorithms Course — Core Techniques
+## Week 8 — Computational Complexity and Approximation Algorithms
 
-This repository contains implementations, benchmarks, and technical analysis for core algorithmic design techniques including deterministic algorithms, dynamic programming, graph algorithms, and randomized computation.
+This module explores the theoretical limits of computation and the behavior of algorithms for NP and NP-complete problems. The goal of this project is to demonstrate how algorithm designers handle problems that may not have efficient exact solutions by using reductions, heuristics, and approximation algorithms.
 
----
+### Implemented Algorithms
 
-# Week 7 — Randomized Algorithms
+**Exact Exponential Algorithms**
 
-Week 7 focuses on probabilistic algorithm design and randomized data structures.  
-The goal of this module was to explore how randomness improves robustness, scalability, and expected performance while maintaining bounded probabilistic guarantees.
+* Subset Sum — Backtracking implementation illustrating exponential growth
+* SAT Solver — Depth-first search backtracking solver for small CNF instances
 
-## Implemented Algorithms
+**Approximation / Heuristic Algorithms**
 
-### Las Vegas Algorithms (Always Correct, Random Runtime)
-- Randomized QuickSort
-- Randomized QuickSelect
+* Vertex Cover — 2-Approximation algorithm using greedy edge selection
+* Traveling Salesman Problem (TSP) — Nearest Neighbor heuristic
 
-### Monte Carlo Algorithms (Probabilistic Accuracy)
-- Fermat Primality Test
-- Miller–Rabin Primality Test
+**Complexity Demonstration**
 
-### Probabilistic Data Structures
-- Bloom Filter (probabilistic membership testing)
-- MinHash (Jaccard similarity estimation)
+* Example reduction from **3-SAT to Vertex Cover** illustrating how NP-complete problems can be transformed into one another in polynomial time.
 
----
+### Benchmark Experiments
 
-## Benchmark Execution
+The benchmarking suite evaluates both exact and approximate algorithms on inputs of increasing size.
 
-All Week 7 results are generated using:
+Key comparisons include:
 
-```bash
-python -m benchmarks.week7_randomized_benchmark
-```
+* Exponential algorithms vs polynomial-time heuristics
+* Approximation solution quality vs optimal solutions
+* Runtime growth as input size increases
 
-All outputs are saved in:
+The experiments highlight how exact exponential algorithms quickly become computationally expensive, while heuristics and approximation algorithms provide scalable alternatives.
 
-```
-benchmarks/results/
-```
+### Benchmark Outputs
 
-### Generated Visualizations
+Running the benchmark script produces the following files:
 
-- quicksort_comparison.png  
-- quicksort_comparison_sorted.png  
-- selection_runtime.png  
-- primality_accuracy.png  
-- primality_speed.png  
-- bloom_filter_fp_rate.png  
-- minhash_similarity_plot.png  
-- summary_table.csv  
+benchmarks/results/runtime_growth.png
+benchmarks/results/approximation_quality.png
+benchmarks/results/comparison_table.csv
 
-These plots validate theoretical expectations and empirically demonstrate performance trade-offs between deterministic and probabilistic techniques.
+These outputs visualize:
 
----
+* Runtime growth of exact vs heuristic algorithms
+* Approximation ratios for Vertex Cover and TSP
+* Tabulated experimental data for further analysis
 
-## Testing
+### Running the Benchmark
 
-Run all randomized module tests:
+From the project root directory:
 
-```bash
-pytest tests/randomized -v
-```
+python -m benchmarks.week8_complexity_benchmark
 
-All components are fully tested and reproducible.
+### Running Tests
 
----
+To run the full automated test suite:
 
-## Key Concepts Demonstrated
+python -m pytest
 
-- Las Vegas vs Monte Carlo algorithms  
-- Expected O(n log n) vs adversarial worst-case behavior  
-- Probabilistic error bounds  
-- False positive rates and load factors  
-- Runtime variance analysis  
-- Similarity estimation using randomized hashing  
-- Empirical validation of theoretical complexity  
+All implementations include unit tests verifying correctness and expected algorithm behavior.
 
----
+### Key Insight
 
-## Repository Structure
+This module demonstrates the practical implications of computational complexity. While many important problems are believed to require exponential time for exact solutions, approximation algorithms and heuristics provide practical methods for obtaining useful solutions within polynomial time.
 
-```
-src/
-    sorting/
-    randomized/
-    dp/
-    graphs/
-    structures/
-
-benchmarks/
-    week7_randomized_benchmark.py
-    results/
-
-tests/
-    randomized/
-
-reports/
-    Week7_Report.md
-```
-
----
 
 # GitHub
 
