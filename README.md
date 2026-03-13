@@ -1,66 +1,29 @@
 ## Week 8 — Computational Complexity and Approximation Algorithms
 
-This module explores the theoretical limits of computation and the behavior of algorithms for NP and NP-complete problems. The goal of this project is to demonstrate how algorithm designers handle problems that may not have efficient exact solutions by using reductions, heuristics, and approximation algorithms.
+## Week 9 - Approximation Algorithms
 
-### Implemented Algorithms
+This module explores efficient approximation techniques for NP-hard optimization problems. The project includes implementations and benchmarks for:
 
-**Exact Exponential Algorithms**
+- Vertex Cover 2-Approximation
+- Set Cover via LP Relaxation and Rounding
+- Greedy Facility Location
+- Metric TSP 2-Approximation
+- Randomized Max-Cut
 
-* Subset Sum — Backtracking implementation illustrating exponential growth
-* SAT Solver — Depth-first search backtracking solver for small CNF instances
+### Files Added
 
-**Approximation / Heuristic Algorithms**
+- `src/approximation/vertex_cover_2approx.py`
+- `src/approximation/set_cover_lpround.py`
+- `src/approximation/facility_location_greedy.py`
+- `src/approximation/tsp_metric_approx.py`
+- `src/approximation/maxcut_randomized.py`
+- `benchmarks/week9_approx_benchmark.py`
+- `reports/Week9_Report.md`
 
-* Vertex Cover — 2-Approximation algorithm using greedy edge selection
-* Traveling Salesman Problem (TSP) — Nearest Neighbor heuristic
+### Run Tests
 
-**Complexity Demonstration**
-
-* Example reduction from **3-SAT to Vertex Cover** illustrating how NP-complete problems can be transformed into one another in polynomial time.
-
-### Benchmark Experiments
-
-The benchmarking suite evaluates both exact and approximate algorithms on inputs of increasing size.
-
-Key comparisons include:
-
-* Exponential algorithms vs polynomial-time heuristics
-* Approximation solution quality vs optimal solutions
-* Runtime growth as input size increases
-
-The experiments highlight how exact exponential algorithms quickly become computationally expensive, while heuristics and approximation algorithms provide scalable alternatives.
-
-### Benchmark Outputs
-
-Running the benchmark script produces the following files:
-
-benchmarks/results/runtime_growth.png
-benchmarks/results/approximation_quality.png
-benchmarks/results/comparison_table.csv
-
-These outputs visualize:
-
-* Runtime growth of exact vs heuristic algorithms
-* Approximation ratios for Vertex Cover and TSP
-* Tabulated experimental data for further analysis
-
-### Running the Benchmark
-
-From the project root directory:
-
-python -m benchmarks.week8_complexity_benchmark
-
-### Running Tests
-
-To run the full automated test suite:
-
-python -m pytest
-
-All implementations include unit tests verifying correctness and expected algorithm behavior.
-
-### Key Insight
-
-This module demonstrates the practical implications of computational complexity. While many important problems are believed to require exponential time for exact solutions, approximation algorithms and heuristics provide practical methods for obtaining useful solutions within polynomial time.
+```bash
+python -m pytest tests
 
 
 # GitHub
