@@ -1,30 +1,20 @@
-## Week 8 — Computational Complexity and Approximation Algorithms
+## String Search Project
 
-## Week 9 - Approximation Algorithms
+Implemented:
+- KMP (deterministic)
+- Rabin–Karp (hash-based)
+- Suffix Array + LCP
+- Compressed Suffix Tree
 
-This module explores efficient approximation techniques for NP-hard optimization problems. The project includes implementations and benchmarks for:
+Applications:
+- DNA sequence search
+- Plagiarism detection
 
-- Vertex Cover 2-Approximation
-- Set Cover via LP Relaxation and Rounding
-- Greedy Facility Location
-- Metric TSP 2-Approximation
-- Randomized Max-Cut
+Benchmarking:
+- Runtime comparison across dataset sizes
+- Collision analysis for Rabin–Karp
 
-### Files Added
-
-- `src/approximation/vertex_cover_2approx.py`
-- `src/approximation/set_cover_lpround.py`
-- `src/approximation/facility_location_greedy.py`
-- `src/approximation/tsp_metric_approx.py`
-- `src/approximation/maxcut_randomized.py`
-- `benchmarks/week9_approx_benchmark.py`
-- `reports/Week9_Report.md`
-
-### Run Tests
-
-```bash
-python -m pytest tests
-
+Results included in `benchmarks/results/`
 
 # GitHub
 
